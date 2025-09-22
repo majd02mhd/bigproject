@@ -1,5 +1,6 @@
 package Automation;
 
+import java.awt.List;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -127,13 +128,25 @@ public class Mytestcases extends mydata {
 	public void addtocart() {
 		driver.navigate().to(url);
 
-		WebElement item1 = driver.findElement(By.xpath("(//a[@title='Add to Cart'])[1]"));
-		WebElement item2 = driver.findElement(By.xpath("(//a[@title='Add to Cart'])[2]"));
-		WebElement item3 = driver.findElement(By.xpath("(//a[@title='Add to Cart'])[10]"));
-
-		item1.click();
-		item2.click();
-		item3.click();
 	
+    	for(int i=0;i<10;i++) {
+    		java.util.List<WebElement> allitems=driver.findElements(By.className("prdocutname"));
+        	int randomindexofElement=rand.nextInt(allitems.size());
+        	WebElement item =allitems.get(randomindexofElement);
+
+   	     item.click();
+    	while(driver.getPageSource().contains("Out of Stock"))
+    	{
+        	driver.navigate().back();;
+    		allitems = driver.findElements(By.className("prdocutname"));
+            randomindexofElement = rand.nextInt(allitems.size());
+            item = allitems.get(randomindexofElement);
+            item.click();
+    		}
+    	WebElement addtocartbtn=driver.findElement(By.cssSelector(".cart"));
+        addtocartbtn.click();
+    	driver.navigate().to(url);
+        }
+		
 	}
 }
