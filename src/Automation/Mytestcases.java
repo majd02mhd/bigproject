@@ -130,11 +130,10 @@ public class Mytestcases extends mydata {
 		WebElement item1 = driver.findElement(By.xpath("(//a[@title='Add to Cart'])[1]"));
 		WebElement item2 = driver.findElement(By.xpath("(//a[@title='Add to Cart'])[2]"));
 		WebElement item3 = driver.findElement(By.xpath("(//a[@title='Add to Cart'])[10]"));
-		WebElement item4 = driver.findElement(By.xpath("(//a[@title='Add to Cart'])[4]"));
 
 		item1.click();
 		item2.click();
 		item3.click();
-		item4.click();
+	
 	}
 }
